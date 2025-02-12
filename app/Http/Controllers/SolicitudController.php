@@ -14,14 +14,25 @@ class SolicitudController extends Controller
      */
 
 
-    public function index()
-    {
 
-    }
-    public function adminIndex()
+// Mostrar el panel de solicitudes solo si es Andrés
+public function adminIndex(Request $request)
 {
-    $solicitudes = Solicitud::latest()->get();
-    return view('solicitudes.index', compact('solicitudes'));
+  // Verifica si el usuario es Andrés (correo: andres@gmail.com y contraseña: 123)
+  if ($request->input('email') !== 'andres@gmail.com' || $request->input('password') !== '123') {
+    return redirect('/admin/login')->with('error', 'Credenciales incorrectas');
+}
+
+// Si la validación es exitosa, muestra las solicitudes
+$solicitudes = Solicitud::latest()->get();
+return view('solicitudes.index', compact('solicitudes'));
+}
+
+// Mostrar el formulario de login
+public function showLogin()
+{
+    return view('solicitudes.admin-login');
+
 }
 
     /**
@@ -47,37 +58,19 @@ class SolicitudController extends Controller
 
         Solicitud::create($request->all());
 
-        return redirect()->back()->with('success', '¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
-    }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Solicitud $solicitud)
-    {
-        //
+        return redirect()->back()->with('success', 'Solicitud enviada correctamente');
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Solicitud $solicitud)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Solicitud $solicitud)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Solicitud $solicitud)
     {
-        //
+        $solicitud->delete();
+
+        return redirect()->route('admin.solicitudes')->with('success', 'Solicitud eliminada correctamente.');
     }
+
 }

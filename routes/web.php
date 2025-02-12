@@ -36,11 +36,22 @@ Route::get('/solicitudes/crear', [SolicitudController::class, 'create'])->name('
 Route::post('/solicitudes', [SolicitudController::class, 'store'])->name('solicitudes.store');
 
 
-// Ruta protegida para administradores
-// Route::middleware(['auth', 'can:admin'])->group(function () {
-//     Route::get('/admin/solicitudes', [SolicitudController::class, 'adminIndex'])->name('admin.solicitudes');
-// });
+Route::get('/servicios', function () {
+    return view('servicios.servicios');
+})->name('servicios');
 
+
+// Muestra el formulario de login de administrador
+Route::get('/admin/login', [SolicitudController::class, 'showLogin'])->name('admin.login');
+
+// Permite acceder al panel de solicitudes con GET
 Route::get('/admin/solicitudes', [SolicitudController::class, 'adminIndex'])->name('admin.solicitudes');
 
+// Procesa el formulario de login (si necesitas enviar credenciales por POST)
+Route::post('/admin/solicitudes', [SolicitudController::class, 'adminIndex']);
 
+
+
+
+    Route::delete('/solicitudes/{solicitud}', [SolicitudController::class, 'destroy'])
+        ->name('solicitudes.destroy');

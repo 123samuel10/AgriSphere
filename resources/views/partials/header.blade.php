@@ -17,34 +17,47 @@
             <a href="/clientes" class="nav-link transition duration-300 hover:text-green-300 hover:underline">Clientes</a>
         </nav>
 
-        <!-- Botón menú móvil -->
-        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none">
+        <!-- Botón menú móvil (solo visible en pantallas pequeñas) -->
+        <button id="menu-toggle" class="text-3xl focus:outline-none md:hidden">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 
     <!-- Menú móvil -->
-    <nav id="mobile-menu" class="hidden bg-green-900 text-white text-center py-5 space-y-4 absolute top-full left-0 w-full shadow-lg">
-        <a href="/" class="block transition duration-300 hover:text-green-300">Inicio</a>
-        <a href="/servicios" class="block transition duration-300 hover:text-green-300">Servicios</a>
-        <a href="/ventajas" class="block transition duration-300 hover:text-green-300">Ventajas</a>
-        <a href="/objetivos" class="block transition duration-300 hover:text-green-300">Objetivos</a>
-        <a href="/clientes" class="block transition duration-300 hover:text-green-300">Clientes</a>
+    <nav id="mobile-menu" class="hidden bg-green-900 text-white text-center py-5 space-y-4 absolute top-full left-0 w-full shadow-lg md:hidden">
+        <a href="/" class="mobile-link block transition duration-300 hover:text-green-300">Inicio</a>
+        <a href="/servicios" class="mobile-link block transition duration-300 hover:text-green-300">Servicios</a>
+        <a href="/ventajas" class="mobile-link block transition duration-300 hover:text-green-300">Ventajas</a>
+        <a href="/objetivos" class="mobile-link block transition duration-300 hover:text-green-300">Objetivos</a>
+        <a href="/clientes" class="mobile-link block transition duration-300 hover:text-green-300">Clientes</a>
     </nav>
 
     <!-- Script para menú móvil -->
     <script>
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
 
-        // Agregar clase activa para resaltar la sección actual
-        const links = document.querySelectorAll('.nav-link');
-        links.forEach(link => {
-            if (link.href === window.location.href) {
-                link.classList.add('border-b-2', 'border-green-300', 'text-green-300');
-            }
+            menuToggle.addEventListener("click", function () {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+            // Cerrar menú cuando se selecciona una opción
+            mobileLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    mobileMenu.classList.add("hidden");
+                });
+            });
+
+            // Agregar clase activa para resaltar la sección actual
+            const desktopLinks = document.querySelectorAll('.nav-link');
+            desktopLinks.forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add('border-b-2', 'border-green-300', 'text-green-300');
+                }
+            });
         });
     </script>
 </header>
+
