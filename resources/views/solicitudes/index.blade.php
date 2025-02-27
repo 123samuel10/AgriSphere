@@ -77,7 +77,7 @@
 <div id="modalConfirmacion" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white p-6 rounded-lg shadow-2xl text-center max-w-sm">
         <h3 class="text-xl font-bold mb-4 text-red-600">¿Estás seguro?</h3>
-        <p class="mb-4">Esta acción no se puede deshacer.</p>
+        <p class="mb-4">Esta acción no se puede deshacer</p>
         <form id="formEliminar" method="POST">
             @csrf
             @method('DELETE')
