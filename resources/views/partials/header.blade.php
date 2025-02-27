@@ -5,7 +5,7 @@
         <!-- Logo y slogan -->
         <div class="text-left flex items-center space-x-3">
             <a href="/" class="text-4xl font-bold text-white hover:text-green-300 transition duration-300">AgriSphere</a>
-            <p class="text-sm italic text-gray-200 mt-2 hidden md:block">"Cultivando datos, cosechando un mejor futuro"</p>
+            <p class="text-sm italic text-gray-200 mt-2 hidden md:block">“Cultivamos datos para cosechar un futuro sostenible”</p>
         </div>
 
         <!-- Menú Desktop -->
