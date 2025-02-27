@@ -18,20 +18,18 @@
             @csrf
             <div>
                 <label for="email" class="block text-gray-700 font-semibold mb-2">Correo electrónico</label>
-                <input type="email" name="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition" required>
+                <input type="email" name="email" id="email" autocomplete="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition" required>
             </div>
 
             <div>
                 <label for="password" class="block text-gray-700 font-semibold mb-2">Contraseña</label>
-                <input type="password" name="password" id="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition" required>
+                <input type="password" name="password" id="password" autocomplete="current-password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition" required>
             </div>
 
             <button type="submit" class="w-full bg-green-700 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-800 transition">
                 Iniciar sesión
             </button>
         </form>
-
-
     </div>
 </div>
 @endsection

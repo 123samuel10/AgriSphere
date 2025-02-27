@@ -9,6 +9,8 @@ use App\Http\Controllers\VentajaController;
 use App\Http\Controllers\VisionController;
 use App\Models\Testimonio;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -65,3 +67,6 @@ Route::get('/testimonios', [TestimonioController::class, 'index'])->name('testim
 Route::get('/testimonios/crear', [TestimonioController::class, 'create'])->name('testimonios.create');
 Route::post('/testimonios', [TestimonioController::class, 'store'])->name('testimonios.store');
 Route::delete('/testimonios/{testimonio}', [TestimonioController::class, 'destroy'])->name('testimonios.destroy');
+
+
+
