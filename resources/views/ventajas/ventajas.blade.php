@@ -13,7 +13,7 @@
                 <i class="fas fa-chart-line"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Gestionar la productividad por hectárea</h3>
+                <h3 class="text-xl font-semibold text-green-700">Gestiona la productividad por hectárea</h3>
                 <p class="text-gray-600">Optimiza los costos de producción y el precio de venta por kilogramo para maximizar tus beneficios.</p>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <i class="fas fa-trophy"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Mejorar estándares de competitividad</h3>
+                <h3 class="text-xl font-semibold text-green-700">Mejora estándares de competitividad</h3>
                 <p class="text-gray-600">Logra un posicionamiento más fuerte en el mercado mejorando la calidad y eficiencia en tus procesos productivos.</p>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Gestionar el riesgo del cultivo</h3>
+                <h3 class="text-xl font-semibold text-green-700">Gestiona el riesgo del cultivo</h3>
                 <p class="text-gray-600">Minimiza riesgos asociados al terreno y las condiciones climáticas que puedan afectar tus cultivos.</p>
             </div>
         </div>
@@ -43,8 +43,8 @@
                 <i class="fas fa-lightbulb"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Generar conocimiento, innovación y nuevas oportunidades de negocio</h3>
-                <p class="text-gray-600">Incorporar tecnología de punta para abrir nuevas oportunidades y mejorar la rentabilidad de tu operación.</p>
+                <h3 class="text-xl font-semibold text-green-700">Genera conocimiento, innovación y nuevas oportunidades de negocio</h3>
+                <p class="text-gray-600">Incorpora tecnología de punta para abrir nuevas oportunidades y mejorar la rentabilidad de tu operación.</p>
             </div>
         </div>
 
@@ -53,8 +53,8 @@
                 <i class="fas fa-database"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Analizar datos reales</h3>
-                <p class="text-gray-600">Tomar decisiones informadas mediante el análisis de datos precisos y actualizados en tiempo real.</p>
+                <h3 class="text-xl font-semibold text-green-700">Analiza datos reales</h3>
+                <p class="text-gray-600">Toma decisiones informadas mediante el análisis de datos precisos y actualizados en tiempo real.</p>
             </div>
         </div>
 
@@ -63,8 +63,8 @@
                 <i class="fas fa-seedling"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Aprovechar el potencial genético de rendimiento</h3>
-                <p class="text-gray-600">Maximizar los rendimientos mediante la selección de materiales genéticos con alto potencial de producción.</p>
+                <h3 class="text-xl font-semibold text-green-700">Aprovecha el potencial genético de rendimiento</h3>
+                <p class="text-gray-600">Maximiza los rendimientos mediante la selección de materiales genéticos con alto potencial de producción.</p>
             </div>
         </div>
 
@@ -73,8 +73,8 @@
                 <i class="fas fa-sun"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Gestionar factores climáticos extremos</h3>
-                <p class="text-gray-600">Supervisar y controlar factores como la humedad y luminosidad para asegurar un cultivo saludable.</p>
+                <h3 class="text-xl font-semibold text-green-700">Gestiona factores climáticos extremos</h3>
+                <p class="text-gray-600">Supervisa y controla factores como la humedad y luminosidad para asegurar un cultivo saludable.</p>
             </div>
         </div>
 
@@ -83,8 +83,8 @@
                 <i class="fas fa-bug"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Enfrentar plagas y enfermedades</h3>
-                <p class="text-gray-600">Utilizar herramientas tecnológicas para prevenir y controlar plagas y enfermedades en los cultivos.</p>
+                <h3 class="text-xl font-semibold text-green-700">Enfrenta plagas y enfermedades</h3>
+                <p class="text-gray-600">Utiliza herramientas tecnológicas para prevenir y controlar plagas y enfermedades en los cultivos.</p>
             </div>
         </div>
 
@@ -93,8 +93,8 @@
                 <i class="fas fa-map-marker-alt"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Planear la utilización de terrenos</h3>
-                <p class="text-gray-600">Planificar el uso eficiente de los terrenos para maximizar el aprovechamiento de los recursos.</p>
+                <h3 class="text-xl font-semibold text-green-700">Planea la utilización de terrenos</h3>
+                <p class="text-gray-600">Planifica el uso eficiente de los terrenos para maximizar el aprovechamiento de los recursos.</p>
             </div>
         </div>
 
@@ -103,8 +103,8 @@
                 <i class="fas fa-globe"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Evidenciar la topografía como factor decisivo</h3>
-                <p class="text-gray-600">Tomar en cuenta la topografía para garantizar la sostenibilidad económica, ambiental y social de los cultivos.</p>
+                <h3 class="text-xl font-semibold text-green-700">Evidencia la topografía como factor decisivo</h3>
+                <p class="text-gray-600">Toma en cuenta la topografía para garantizar la sostenibilidad económica, ambiental y social de los cultivos.</p>
             </div>
         </div>
 
@@ -113,8 +113,8 @@
                 <i class="fas fa-arrow-up"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Acelerar el crecimiento en los rendimientos</h3>
-                <p class="text-gray-600">Fomentar la investigación y la transferencia de tecnología para acelerar el crecimiento de la producción por hectárea.</p>
+                <h3 class="text-xl font-semibold text-green-700">Acelera el crecimiento en los rendimientos</h3>
+                <p class="text-gray-600">Fomenta la investigación y la transferencia de tecnología para acelerar el crecimiento de la producción por hectárea.</p>
             </div>
         </div>
     </div>

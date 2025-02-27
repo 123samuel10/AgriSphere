@@ -13,7 +13,7 @@
             ['imagen' => 'servicio2.jpeg', 'titulo' => 'Análisis Bromatológico Digital', 'descripcion' => 'Evaluación precisa del estado nutricional de los cultivos, permitiendo la toma de decisiones informadas para mejorar la salud y el rendimiento de las plantas.'],
             ['imagen' => 'servicio3.jpeg', 'titulo' => 'Análisis del Estado Fenológico de los Cultivos', 'descripcion' => 'Seguimiento detallado al desarrollo del cultivo, asegurando una gestión más eficiente y un crecimiento saludable a lo largo de todo su ciclo.'],
             ['imagen' => 'servicio5.jpeg', 'titulo' => 'Aspersiones Inteligentes', 'descripcion' => 'Zonificación de malezas, identificación y mapeo de áreas afectadas, vuelos autónomos y gestión en tiempo real de la labor cultural.'],
-            ['imagen' => 'servicio7.jpeg', 'titulo' => 'Diseño de Sistemas de Riego', 'descripcion' => 'Aforo de aguas, obras civiles y alternativas sostenibles para garantizar el suministro adecuado y eficiente de agua en las áreas de cultivo.'],
+            ['imagen' => 'servicio7.jpeg', 'titulo' => 'Diseño de Sistemas de Riego y de Drenaje', 'descripcion' => 'Aforo de aguas, obras civiles y alternativas sostenibles para garantizar el suministro adecuado y eficiente de agua en las áreas de cultivo.'],
             ['imagen' => 'servicio6.jpeg', 'titulo' => 'Diseño de Sistemas Rotacionales de Ganado', 'descripcion' => 'División del territorio, altimetrías, calidad de las pasturas, manejo de aguas, sales minerales y estrategia de fertilización.']
         ] as $servicio)
         <div class="bg-white shadow-xl rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">

@@ -1,32 +1,42 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Mail\CorreoSolicitud;
 use App\Models\Solicitud;
+use App\Models\Testimonio;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
-
 class SolicitudController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
 
+     public function adminIndex(Request $request)
+     {
+         if ($request->isMethod('post')) {
+             if ($request->input('email') === 'alberto@gmail.com' && $request->input('password') === '123alberto@') {
+                 session(['admin_auth' => true]);
+                 return redirect()->route('admin.solicitudes');
+             } else {
+                 return redirect()->route('admin.login')->with('error', 'Credenciales incorrectas.');
+             }
+         }
+
+         if (!session('admin_auth')) {
+             return redirect()->route('admin.login')->with('error', 'Debes iniciar sesión.');
+         }
+
+         // Obtener solicitudes y testimonios
+         $solicitudes = Solicitud::latest()->get();
+         $testimonios = Testimonio::latest()->get(); // Agregar esta línea
+
+         return view('solicitudes.index', compact('solicitudes', 'testimonios')); // Pasar testimonios a la vista
+     }
 
 
-// Mostrar el panel de solicitudes solo si es Andrés
-public function adminIndex(Request $request)
-{
-  // Verifica si el usuario es Andrés (correo: andres@gmail.com y contraseña: 123)
-  if ($request->input('email') !== 'andres@gmail.com' || $request->input('password') !== '123') {
-    return redirect('/admin/login')->with('error', 'Credenciales incorrectas');
-}
-
-// Si la validación es exitosa, muestra las solicitudes
-$solicitudes = Solicitud::latest()->get();
-return view('solicitudes.index', compact('solicitudes'));
-}
 
 // Mostrar el formulario de login
 public function showLogin()
@@ -69,7 +79,6 @@ public function showLogin()
     public function destroy(Solicitud $solicitud)
     {
         $solicitud->delete();
-
         return redirect()->route('admin.solicitudes')->with('success', 'Solicitud eliminada correctamente.');
     }
 

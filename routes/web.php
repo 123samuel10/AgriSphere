@@ -4,13 +4,15 @@ use App\Http\Controllers\MisionController;
 use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Controllers\TestimonioController;
 use App\Http\Controllers\VentajaController;
 use App\Http\Controllers\VisionController;
+use App\Models\Testimonio;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::get('/', function () {
@@ -39,7 +41,7 @@ Route::post('/solicitudes', [SolicitudController::class, 'store'])->name('solici
 Route::get('/servicios', function () {
     return view('servicios.servicios');
 })->name('servicios');
-
+//--------------------------------------------------------------------------------------------
 
 // Muestra el formulario de login de administrador
 Route::get('/admin/login', [SolicitudController::class, 'showLogin'])->name('admin.login');
@@ -50,8 +52,16 @@ Route::get('/admin/solicitudes', [SolicitudController::class, 'adminIndex'])->na
 // Procesa el formulario de login (si necesitas enviar credenciales por POST)
 Route::post('/admin/solicitudes', [SolicitudController::class, 'adminIndex']);
 
-
-
-
-    Route::delete('/solicitudes/{solicitud}', [SolicitudController::class, 'destroy'])
+ Route::delete('/solicitudes/{solicitud}', [SolicitudController::class, 'destroy'])
         ->name('solicitudes.destroy');
+
+
+//----------------------------------------------------TESTIMONIOS
+
+
+Route::get('/', [TestimonioController::class, 'home'])->name('home');
+
+Route::get('/testimonios', [TestimonioController::class, 'index'])->name('testimonios.index');
+Route::get('/testimonios/crear', [TestimonioController::class, 'create'])->name('testimonios.create');
+Route::post('/testimonios', [TestimonioController::class, 'store'])->name('testimonios.store');
+Route::delete('/testimonios/{testimonio}', [TestimonioController::class, 'destroy'])->name('testimonios.destroy');

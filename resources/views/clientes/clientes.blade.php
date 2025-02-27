@@ -47,7 +47,7 @@
                         <td>En ejecución</td>
                     </tr>
                     <tr>
-                        <td>AgroInsumos</td>
+                        <td>AgroInsumos SAS</td>
                         <td>Seguimiento multispectral para fenotipado de nuevas variedades, reconocimiento aéreo</td>
                         <td>En ejecución</td>
                     </tr>
