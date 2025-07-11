@@ -28,6 +28,6 @@
 
     <div class="text-center">
         <p class="text-sm">© 2025 AgriSphere - Todos los derechos reservados</p>
-        <a href="{{ route('admin.login') }}" class="text-green-500 hover:text-green-700">Iniciar sesión</a>
+        <a href="{{ route('login') }}" class="text-green-500 hover:text-green-700">Iniciar sesión</a>
     </div>
 </footer>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MisionController;
 use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ServicioController;
@@ -46,7 +47,7 @@ Route::get('/servicios', function () {
 //--------------------------------------------------------------------------------------------
 
 // Muestra el formulario de login de administrador
-Route::get('/admin/login', [SolicitudController::class, 'showLogin'])->name('admin.login');
+// Route::get('/admin/login', [SolicitudController::class, 'showLogin'])->name('admin.login');
 
 // Permite acceder al panel de solicitudes con GET
 Route::get('/admin/solicitudes', [SolicitudController::class, 'adminIndex'])->name('admin.solicitudes');
@@ -70,3 +71,15 @@ Route::delete('/testimonios/{testimonio}', [TestimonioController::class, 'destro
 
 
 
+// RUTAS DE AUTENTICACIÓN
+// ✅ ÚNICAS rutas correctas de auth
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/panel', [SolicitudController::class, 'panel'])->name('panel');
