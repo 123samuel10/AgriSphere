@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('servicio');
             $table->text('mensaje')->nullable();
+               $table->string('archivo')->nullable();
             $table->timestamps();
         });
     }
@@ -25,8 +26,9 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::dropIfExists('solicitudes');
-    }
+ public function down(): void
+{
+    Schema::dropIfExists('solicitudes');
+}
+
 };

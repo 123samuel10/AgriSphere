@@ -23,10 +23,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        // Bloquear correo reservado
-        if ($request->email === 'alberto@gmail.com') {
-            return back()->with('error', 'No puedes usar este correo.');
-        }
+
 
         $user = User::create([
             'name' => $request->name,

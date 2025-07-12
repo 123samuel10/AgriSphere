@@ -11,4 +11,13 @@ class Solicitud extends Model
 
   protected $fillable = ['nombre', 'email', 'telefono', 'servicio', 'mensaje'];
 
+
+
+
+    public function archivos()
+    {
+        return $this->hasMany(ArchivoSolicitud::class);
+    }
+
 }
+

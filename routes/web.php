@@ -6,6 +6,7 @@ use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\TestimonioController;
+use App\Http\Controllers\UsuarioSolicitudController;
 use App\Http\Controllers\VentajaController;
 use App\Http\Controllers\VisionController;
 use App\Models\Testimonio;
@@ -83,3 +84,25 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/panel', [SolicitudController::class, 'panel'])->name('panel');
+
+
+
+//rutas para subir archivo
+Route::get('/solicitudes/{id}/enviar-pdf', [SolicitudController::class, 'enviarPdf'])->name('solicitudes.enviarPdf');
+
+
+Route::post('/solicitudes/{solicitud}/subir-archivo', [SolicitudController::class, 'subirArchivo'])
+    ->name('solicitudes.subirArchivo');
+
+Route::get('/solicitudes/{solicitud}/archivo', [SolicitudController::class, 'verArchivo'])
+    ->name('solicitudes.verArchivo');
+
+
+    //rutas para los archivos subirlo (admin)
+
+    Route::post('/solicitudes/{solicitud}/archivo', [SolicitudController::class, 'subirArchivo'])->name('solicitudes.subirArchivo');
+Route::get('/archivo/{archivoSolicitud}', [SolicitudController::class, 'verArchivo'])->name('verArchivo');
+
+//rutas oara observar archivos (usuario)
+Route::get('/usuario/solicitudes', [UsuarioSolicitudController::class, 'index'])->name('usuario.solicitudes');
+Route::get('/usuario/archivo/{archivoSolicitud}', [UsuarioSolicitudController::class, 'verArchivo'])->name('usuario.verArchivo');
