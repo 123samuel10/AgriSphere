@@ -4,6 +4,7 @@ use App\Mail\CorreoSolicitud;
 use App\Models\ArchivoSolicitud;
 use App\Models\Solicitud;
 use App\Models\Testimonio;
+use App\Models\User;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -58,7 +59,8 @@ public function panel()
 public function subirArchivo(Request $request, Solicitud $solicitud)
 {
     $request->validate([
-        'archivo' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+       'archivo' => 'required|file|mimes:pdf,jpg,jpeg,png|max:15360',
+
     ]);
 
     $archivo = $request->file('archivo')->store('archivos_solicitudes', 'public');
@@ -72,6 +74,7 @@ public function subirArchivo(Request $request, Solicitud $solicitud)
 }
 
 
+
     public function verArchivo(ArchivoSolicitud $archivoSolicitud)
     {
         if (!$archivoSolicitud->ruta) {
@@ -80,4 +83,33 @@ public function subirArchivo(Request $request, Solicitud $solicitud)
 
         return response()->file(storage_path('app/public/' . $archivoSolicitud->ruta));
     }
+public function eliminarArchivo(ArchivoSolicitud $archivoSolicitud)
+{
+    // Ruta física absoluta al archivo
+    $ruta = public_path('storage/' . $archivoSolicitud->ruta);
+
+    // Si el archivo existe, lo borra
+    if (file_exists($ruta)) {
+        unlink($ruta);
+    }
+
+    // Borra el registro de la base de datos
+    $archivoSolicitud->delete();
+
+    return back()->with('success', 'Archivo eliminado correctamente.');
+}
+
+public function verUsuarios()
+{
+    if (session('user_email') !== 'alberto@gmail.com') {
+        return redirect()->route('panel')->with('error', 'No tienes permisos.');
+    }
+
+    $usuarios = User::all();
+
+return view('usuarios.usuariosRegistrados', compact('usuarios'));
+
+
+}
+
 }

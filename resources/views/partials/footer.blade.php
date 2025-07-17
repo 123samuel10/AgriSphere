@@ -11,7 +11,7 @@
         <!-- Redes Sociales -->
         <div class="flex space-x-6 text-3xl mt-6 md:mt-0 justify-center md:justify-start">
   <a href="https://www.instagram.com/agrisphere_2025?igsh=bzJ5d3Y2Y2hrMWFn" class="hover:text-green-300 transition transform hover:scale-125"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/agrisphere2025" class="hover:text-green-300 transition transform hover:scale-125"><i class="fab fa-x-twitter"></i></a>
+             <a href="https://x.com/agrisphere2025" class="hover:text-green-300 transition transform hover:scale-125"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.linkedin.com/in/alberto-jaramillo-406342365/" class="hover:text-green-300 transition transform hover:scale-125"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://www.youtube.com/@agrisphere-f9c/videos" class="hover:text-green-300 transition transform hover:scale-125"><i class="fab fa-youtube"></i></a>
         </div>

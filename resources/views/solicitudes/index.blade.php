@@ -39,38 +39,55 @@
                         <td class="px-6 py-4">{{ $solicitud->telefono }}</td>
                         <td class="px-6 py-4">{{ $solicitud->servicio }}</td>
                         <td class="px-6 py-4 truncate max-w-xs">{{ $solicitud->mensaje }}</td>
-                        <td class="px-6 py-4">{{ $solicitud->created_at->format('d/m/Y H:i') }}</td>
-             <td class="px-6 py-4 text-center">
-    <div class="flex flex-wrap justify-center gap-2">
-
-        <!-- Eliminar -->
-        <button onclick="confirmarEliminacion('/solicitudes/{{ $solicitud->id }}')"
-            class="flex items-center bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded transition text-sm">
-            <i class="fas fa-trash mr-1"></i> Eliminar
-        </button>
-
-        <!-- Ver Archivos (nuevo) -->
-        @foreach($solicitud->archivos as $archivo)
-            <a href="{{ route('verArchivo', $archivo) }}" target="_blank"
-                class="flex items-center bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded transition text-sm">
-                <i class="fas fa-file mr-1"></i> Ver Archivo
-            </a>
-        @endforeach
-
-        <!-- Subir Archivo (ahora para todos) -->
-        <form action="{{ route('solicitudes.subirArchivo', $solicitud->id) }}"
-              method="POST" enctype="multipart/form-data" class="flex items-center gap-2">
-            @csrf
-            <input type="file" name="archivo" class="text-sm" required>
-            <button type="submit"
-                class="flex items-center bg-purple-600 hover:bg-purple-700 text-white px-3 py-1.5 rounded transition text-sm">
-                <i class="fas fa-upload mr-1"></i> Subir
-            </button>
-        </form>
-
-    </div>
+                     <td class="px-6 py-4">
+  {{ $solicitud->created_at->timezone('America/Bogota')->format('d/m/Y H:i') }}
 </td>
 
+                        <td class="px-6 py-4 text-center">
+                            <div class="flex flex-col items-center gap-4">
+
+                                <!-- Galería de Archivos -->
+                                <div class="flex flex-wrap gap-4 justify-center">
+                                    @foreach($solicitud->archivos as $archivo)
+                                        <div class="relative w-32 h-32 border rounded-lg overflow-hidden shadow">
+                                            <a href="{{ route('verArchivo', $archivo) }}" target="_blank">
+                                                @if(Str::endsWith($archivo->ruta, ['.jpg', '.jpeg', '.png']))
+                                                    <img src="{{ asset('storage/' . $archivo->ruta) }}" alt="Archivo"
+                                                        class="w-full h-full object-cover">
+                                                @else
+                                                    <div class="flex items-center justify-center w-full h-full bg-gray-200">
+                                                        <i class="fas fa-file-pdf text-4xl text-red-600"></i>
+                                                    </div>
+                                                @endif
+                                            </a>
+                                            <!-- Botón Eliminar -->
+                                            <button type="button"
+                                                onclick="abrirModalEliminar('{{ route('solicitudes.eliminarArchivo', $archivo) }}')"
+                                                class="absolute top-1 right-1 bg-red-600 hover:bg-red-700 text-white text-xs px-2 py-1 rounded-full">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- Botón Abrir Modal Subir -->
+                              <!-- Botón Abrir Modal Subir -->
+<button type="button"
+    onclick="abrirModalSubir('{{ route('solicitudes.subirArchivo', $solicitud->id) }}')"
+    class="flex items-center bg-green-700 hover:bg-green-800 text-white px-3 py-1.5 rounded transition text-sm shadow-md">
+    <i class="fas fa-upload mr-1"></i> Subir
+</button>
+
+                                   <!-- Botón Eliminar Solicitud COMPLETA -->
+    <button type="button"
+        onclick="abrirModalEliminar('{{ route('solicitudes.eliminar', $solicitud->id) }}')"
+        class="flex items-center bg-red-700 hover:bg-red-800 text-white px-3 py-1.5 rounded transition text-sm">
+        <i class="fas fa-trash mr-1"></i> Eliminar Solicitud
+    </button>
+
+
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -99,7 +116,7 @@
                         <td class="px-6 py-4 truncate max-w-xs">{{ $testimonio->mensaje }}</td>
                         <td class="px-6 py-4">{{ $testimonio->created_at->format('d/m/Y H:i') }}</td>
                         <td class="px-6 py-4 text-center">
-                            <button onclick="confirmarEliminacion('/testimonios/{{ $testimonio->id }}')"
+                            <button onclick="abrirModalEliminar('/testimonios/{{ $testimonio->id }}')"
                                 class="flex items-center bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded transition text-sm">
                                 <i class="fas fa-trash mr-1"></i> Eliminar
                             </button>
@@ -112,9 +129,29 @@
 
 </div>
 
-<!-- Modal Confirmación -->
-<div id="modalConfirmacion" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
-    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm">
+<!-- Modal Subir Archivo -->
+<div id="modalSubir" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+        <h3 class="text-xl font-bold mb-4 text-green-700">Subir Archivo</h3>
+        <form id="formSubir" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
+            @csrf
+            <input type="file" name="archivo" required class="border p-2 rounded">
+            <button type="submit"
+                class="bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded transition font-semibold shadow">
+                Subir
+            </button>
+            <button type="button" onclick="cerrarModalSubir()"
+                class="bg-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded transition font-semibold shadow">
+                Cancelar
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal Confirmación Eliminar -->
+<div id="modalEliminar" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
         <h3 class="text-xl font-bold mb-4 text-red-700">¿Estás seguro?</h3>
         <p class="mb-6 text-gray-700">Esta acción no se puede deshacer.</p>
         <form id="formEliminar" method="POST" class="flex justify-center gap-4">
@@ -124,7 +161,7 @@
                 class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded transition font-semibold">
                 Eliminar
             </button>
-            <button type="button" onclick="cerrarModal()"
+            <button type="button" onclick="cerrarModalEliminar()"
                 class="bg-gray-500 hover:bg-gray-700 text-white px-5 py-2 rounded transition font-semibold">
                 Cancelar
             </button>
@@ -132,13 +169,32 @@
     </div>
 </div>
 
+<a href="{{ route('usuarios.lista') }}"
+    class="inline-block mb-8 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded transition font-semibold">
+    Ver Usuarios Registrados
+</a>
+
+
+
 <script>
-    function confirmarEliminacion(url) {
-        document.getElementById('formEliminar').action = url;
-        document.getElementById('modalConfirmacion').classList.remove('hidden');
+    function abrirModalSubir(ruta) {
+        const form = document.getElementById('formSubir');
+        form.action = ruta; // Usa tu route() generado desde Blade
+        document.getElementById('modalSubir').classList.remove('hidden');
     }
-    function cerrarModal() {
-        document.getElementById('modalConfirmacion').classList.add('hidden');
+
+    function cerrarModalSubir() {
+        document.getElementById('modalSubir').classList.add('hidden');
+    }
+
+    function abrirModalEliminar(ruta) {
+        const form = document.getElementById('formEliminar');
+        form.action = ruta; // Usa tu route() generado desde Blade
+        document.getElementById('modalEliminar').classList.remove('hidden');
+    }
+
+    function cerrarModalEliminar() {
+        document.getElementById('modalEliminar').classList.add('hidden');
     }
 </script>
 @endsection
