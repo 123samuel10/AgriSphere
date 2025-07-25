@@ -3,7 +3,9 @@
 @section('title', 'Mis Solicitudes')
 
 @section('content')
+
 <div class="container mx-auto px-4 py-12">
+    <h1>aca iran las pdf de los clientes</h1>
     <h2 class="text-center text-4xl font-extrabold mb-8 text-green-800">
         Mis Solicitudes
     </h2>
@@ -18,7 +20,10 @@
                     <h3 class="text-2xl font-bold text-green-900 mb-4">
                         {{ $solicitud->servicio }}
                     </h3>
-                    <p class="text-gray-600 mb-6">Fecha: {{ $solicitud->created_at->format('d/m/Y H:i') }}</p>
+                    <p class="text-gray-600 mb-6">
+  Fecha: {{ $solicitud->created_at->timezone('America/Bogota')->format('d/m/Y H:i') }}
+</p>
+
 
                     @if($solicitud->archivos->isNotEmpty())
                         <div class="flex flex-wrap gap-6">

@@ -59,7 +59,12 @@ public function panel()
 public function subirArchivo(Request $request, Solicitud $solicitud)
 {
     $request->validate([
-       'archivo' => 'required|file|mimes:pdf,jpg,jpeg,png|max:15360',
+       'archivo' => 'required|file|mimes:pdf,jpg,jpeg,png|max:15360'],
+       [
+        'archivo.required' => 'Debes seleccionar un archivo.',
+        'archivo.file' => 'El archivo debe ser válido.',
+        'archivo.mimes' => 'El archivo debe ser de tipo: PDF, JPG, JPEG o PNG.',
+        'archivo.max' => 'El archivo no debe superar los 15 MB.',
 
     ]);
 

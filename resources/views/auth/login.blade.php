@@ -5,7 +5,7 @@
 @section('content')
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="w-full max-w-md bg-white shadow-xl rounded-lg p-8">
-        <h2 class="text-center text-3xl font-bold text-green-700 mb-6">Iniciar Sesióndsssss</h2>
+        <h2 class="text-center text-3xl font-bold text-green-700 mb-6">Iniciar Sesion</h2>
 
         <!-- Mostrar mensaje de error -->
         @if (session('error'))
@@ -24,6 +24,13 @@
             <div>
                 <label for="password" class="block text-gray-700 font-semibold mb-2">Contraseña</label>
                 <input type="password" name="password" id="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-green-600 outline-none transition" required>
+            </div>
+
+                  <!-- Enlace de recuperación de contraseña -->
+            <div class="text-right">
+                <a href="{{ route('password.request') }}" class="text-sm text-green-700 font-semibold hover:underline">
+                    ¿Olvidaste tu contraseña?
+                </a>
             </div>
 
             <button type="submit" class="w-full bg-green-700 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-800 transition">

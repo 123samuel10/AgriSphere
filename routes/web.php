@@ -82,3 +82,17 @@ Route::get('/usuario/archivo/{archivoSolicitud}', [UsuarioSolicitudController::c
 
 
 Route::get('/usuarios', [SolicitudController::class, 'verUsuarios'])->name('usuarios.lista');
+
+
+//..................... recuperar contraseña........................................
+// Mostrar formulario para pedir correo
+Route::get('/recuperar-contrasena', [AuthController::class, 'mostrarFormularioRecuperar'])->name('password.request');
+
+// Enviar correo con código
+Route::post('/recuperar-contrasena', [AuthController::class, 'enviarCodigoRecuperacion'])->name('password.send');
+
+// Mostrar formulario para cambiar contraseña
+Route::get('/restablecer-contrasena', [AuthController::class, 'mostrarFormularioRestablecer'])->name('password.reset');
+
+// Guardar nueva contraseña
+Route::post('/restablecer-contrasena', [AuthController::class, 'guardarNuevaContrasena'])->name('password.update');
