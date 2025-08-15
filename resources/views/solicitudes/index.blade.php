@@ -51,7 +51,7 @@
 
                                 <!-- Galería de Archivos -->
 
-                                <div class="flex flex-wrap gap-4 justify-center">
+                                {{-- <div class="flex flex-wrap gap-4 justify-center">
                                     @foreach($solicitud->archivos as $archivo)
                                         <div class="relative w-32 h-32 border rounded-lg overflow-hidden shadow">
                                             <a href="{{ route('verArchivo', $archivo) }}" target="_blank">
@@ -72,7 +72,66 @@
                                             </button>
                                         </div>
                                     @endforeach
-                                </div>
+                                </div> --}}
+<div class="flex flex-wrap gap-6 justify-center">
+    @foreach($solicitud->archivos as $archivo)
+        @php
+            $extension = strtolower(pathinfo($archivo->ruta, PATHINFO_EXTENSION));
+            $tipo = match(true) {
+                in_array($extension, ['jpg','jpeg','png','gif','bmp','svg','webp']) => 'imagen',
+                in_array($extension, ['pdf']) => 'pdf',
+                in_array($extension, ['doc','docx']) => 'word',
+                in_array($extension, ['mp4','avi','mov','mkv','webm']) => 'video',
+                in_array($extension, ['mp3','wav','ogg']) => 'audio',
+                default => 'otro',
+            };
+
+            $colores = [
+                'imagen' => 'bg-white text-gray-700',
+                'pdf'    => 'bg-red-50 text-red-600',
+                'word'   => 'bg-blue-50 text-blue-600',
+                'video'  => 'bg-yellow-50 text-yellow-700',
+                'audio'  => 'bg-green-50 text-green-700',
+                'otro'   => 'bg-gray-100 text-gray-600',
+            ];
+        @endphp
+
+        <div class="relative w-40 h-40 rounded-xl overflow-hidden shadow-lg group transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+            <a href="{{ route('verArchivo', $archivo) }}" target="_blank" class="block w-full h-full">
+
+                @if($tipo === 'imagen')
+                    <img src="{{ asset('storage/' . $archivo->ruta) }}"
+                         alt="Imagen"
+                         class="w-full h-full object-cover">
+                @else
+                    <div class="flex flex-col items-center justify-center w-full h-full p-4 {{ $colores[$tipo] }}">
+                        <i class="
+                            @if($tipo === 'pdf') fas fa-file-pdf
+                            @elseif($tipo === 'word') fas fa-file-word
+                            @elseif($tipo === 'video') fas fa-file-video
+                            @elseif($tipo === 'audio') fas fa-file-audio
+                            @else fas fa-file
+                            @endif
+                            text-5xl mb-2"></i>
+                        <span class="text-sm font-semibold capitalize">{{ ucfirst($tipo) }}</span>
+                    </div>
+                @endif
+
+                <!-- Badge extensión -->
+                <div class="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-0.5 rounded-full uppercase">
+                    {{ $extension }}
+                </div>
+            </a>
+
+            <!-- Botón eliminar -->
+            <button type="button"
+                onclick="abrirModalEliminar('{{ route('solicitudes.eliminarArchivo', $archivo) }}')"
+                class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white text-xs px-2 py-1 rounded-full shadow">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    @endforeach
+</div>
 
                                 <!-- Botón Abrir Modal Subir -->
                               <!-- Botón Abrir Modal Subir -->

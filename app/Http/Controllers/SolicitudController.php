@@ -81,7 +81,7 @@ public function subirArchivo(Request $request, Solicitud $solicitud)
 
     return back()->with('success', 'Archivo subido correctamente.');
 }
-
+//ocumentos: pdf, doc, docx ,Imágenes: jpg, jpeg, png, gif, bmp, svg, webp Videos: mp4, avi, mov, mkv, webm Audios: mp3, wav, ogg
 
 
 

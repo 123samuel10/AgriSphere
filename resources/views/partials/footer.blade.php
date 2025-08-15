@@ -2,11 +2,17 @@
 <footer class="bg-gradient-to-r from-green-800 to-green-600 text-white py-12 mt-12">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
 
-        <!-- Logo -->
-        <div class="flex flex-col items-center md:items-start mb-8 md:mb-0">
-            <img src="{{ asset('storage/icono agrishere.png') }}" alt="AgriSphere" class="h-16 mb-4 transition duration-300 transform hover:scale-110 hover:shadow-xl">
-            <p class="text-sm italic text-gray-200">"Cultivando datos, cosechando un mejor futuro"</p>
-        </div>
+   <!-- Logo -->
+<div class="flex flex-col items-center md:items-start mb-8 md:mb-0">
+    <img src="{{ asset('storage/LOGO.jpeg') }}"
+         alt="AgriSphere"
+         class="h-40 md:h-48 mb-4 transition duration-300 transform hover:scale-110 hover:shadow-xl">
+
+    <p class="text-sm italic text-gray-200">
+        "Cultivando datos, cosechando un mejor futuro"
+    </p>
+</div>
+
 
         <!-- Redes Sociales -->
         <div class="flex space-x-6 text-3xl mt-6 md:mt-0 justify-center md:justify-start">
