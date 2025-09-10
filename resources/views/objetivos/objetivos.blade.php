@@ -67,6 +67,14 @@
             <h4 class="text-xl font-semibold text-green-700 mb-2">Procesos Productivos</h4>
             <p class="text-gray-600">Desarrollar procesos productivos digitalizados y estandarizados.</p>
         </div>
+
+  <!-- Objetivo 10 -->
+<div class="bg-white shadow-lg rounded-lg p-6 text-center hover:shadow-xl transition duration-300">
+    <i class="fas fa-search text-4xl mb-4 text-indigo-600"></i>
+    <h4 class="text-xl font-semibold text-green-700 mb-2">Análisis individuales por dosel</h4>
+    <p class="text-gray-600">Seguir con información digital y precisión cada planta del cultivo.</p>
+</div>
+
     </div>
 </div>
 @endsection

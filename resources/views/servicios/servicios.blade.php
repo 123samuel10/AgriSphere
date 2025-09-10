@@ -9,7 +9,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         @foreach([
-            ['imagen' => 'servicio1.jpeg', 'titulo' => 'Monitoreo de Cultivos', 'descripcion' => 'Aplicación de fotografía digital espectral para un cubrimiento detallado, análisis de densidades, alertas sanitarias y mapeo de precisión.'],
+            ['imagen' => 'servicioN1.jpeg', 'titulo' => 'Monitoreo individual del Cultivo', 'descripcion' => 'Aplicación de fotografía digital espectral para un cubrimiento detallado, análisis de densidades, alertas sanitarias y mapeo de precisión.'],
             ['imagen' => 'servicio2.jpeg', 'titulo' => 'Análisis Bromatológico Digital', 'descripcion' => 'Evaluación precisa del estado nutricional de los cultivos, permitiendo la toma de decisiones informadas para mejorar la salud y el rendimiento de las plantas.'],
             ['imagen' => 'servicio3.jpeg', 'titulo' => 'Análisis del Estado Fenológico de los Cultivos', 'descripcion' => 'Seguimiento detallado al desarrollo del cultivo, asegurando una gestión más eficiente y un crecimiento saludable a lo largo de todo su ciclo.'],
             ['imagen' => 'servicio5.jpeg', 'titulo' => 'Aspersiones Inteligentes', 'descripcion' => 'Zonificación de malezas, identificación y mapeo de áreas afectadas, vuelos autónomos y gestión en tiempo real de la labor cultural.'],

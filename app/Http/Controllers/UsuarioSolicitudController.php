@@ -27,7 +27,15 @@ class UsuarioSolicitudController extends Controller
 
         return view('usuarios.index', compact('solicitudes'));
     }
-
+/**
+ * Permite al usuario ver uno de sus archivos.
+ */
+    /**
+     * Permite al usuario ver uno de sus archivos.
+     */
+ /**
+     * Permite al usuario ver uno de sus archivos.
+     */
     /**
      * Permite al usuario ver uno de sus archivos.
      */
@@ -47,4 +55,8 @@ class UsuarioSolicitudController extends Controller
 
         return response()->file(storage_path('app/public/' . $archivoSolicitud->ruta));
     }
+
+
+
+
 }

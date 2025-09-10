@@ -19,7 +19,7 @@ public function panel()
         return redirect()->route('login')->with('error', 'Debes iniciar sesión.');
     }
 
-    if (session('user_email') === 'alberto@gmail.com') {
+    if (session('user_email') === 'albertojaramillos@hotmail.com') {
         $solicitudes = Solicitud::latest()->get();
         $testimonios = Testimonio::latest()->get();
         return view('solicitudes.index', compact('solicitudes', 'testimonios'));
@@ -81,7 +81,7 @@ public function subirArchivo(Request $request, Solicitud $solicitud)
 
     return back()->with('success', 'Archivo subido correctamente.');
 }
-//ocumentos: pdf, doc, docx ,Imágenes: jpg, jpeg, png, gif, bmp, svg, webp Videos: mp4, avi, mov, mkv, webm Audios: mp3, wav, ogg
+//documentos: pdf, doc, docx ,Imágenes: jpg, jpeg, png, gif, bmp, svg, webp Videos: mp4, avi, mov, mkv, webm Audios: mp3, wav, ogg
 
 
 
@@ -111,7 +111,7 @@ public function eliminarArchivo(ArchivoSolicitud $archivoSolicitud)
 
 public function verUsuarios()
 {
-    if (session('user_email') !== 'alberto@gmail.com') {
+    if (session('user_email') !== 'albertojaramillos@hotmail.com') {
         return redirect()->route('panel')->with('error', 'No tienes permisos.');
     }
 

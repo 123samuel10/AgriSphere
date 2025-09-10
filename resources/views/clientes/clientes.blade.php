@@ -34,32 +34,28 @@
                     <tr>
                         <td>Ricardo y Cia SAS</td>
                         <td>Monitoreo de exposición foliar digital, monitoreo multispectral, alinderamiento satelital, reconocimiento aéreo</td>
-                        <td>En ejecución</td>
+                        <td>Enero 2025</td>
                     </tr>
-                    <tr>
-                        <td>Carlos Aragón</td>
-                        <td>Validación estado nutricional para afinamiento campaña nutricional, reconocimiento aéreo</td>
-                        <td>En ejecución</td>
-                    </tr>
-                    <tr>
-                        <td>David Moreno</td>
-                        <td>Validación estado nutricional para afinamiento campaña nutricional</td>
-                        <td>En ejecución</td>
-                    </tr>
-                    <tr>
-                        <td>AgroInsumos SAS</td>
-                        <td>Seguimiento multispectral para fenotipado de nuevas variedades, reconocimiento aéreo</td>
-                        <td>En ejecución</td>
-                    </tr>
+
+
+
                     <tr>
                         <td>SADEP Ltda</td>
                         <td>Seguimiento foliar digital para calibración del algoritmo Agriwebs</td>
                         <td>Agosto 2024</td>
                     </tr>
-                    <tr>
-                        <td>Marino Botero</td>
-                        <td>Altimetría, estados fenológicos, rutas de aspersión aérea, reconocimiento aéreo</td>
-                        <td>Junio 2024</td>
+
+                        <tr>
+                        <td>HACIENDA LA CABAÑA S.A.</td>
+                        <td>Seguimientos espectrales, análisis individuales por palma y por dosel para optimizar las labores culturales y de fertilización,
+                            priorizando el desarrollo fenológico y la productividad del cultivo de palma de aceite.</td>
+                        <td>En ejecución 2025</td>
+                    </tr>
+
+                            <tr>
+                        <td>HACIENDA FLANDES S.A.S</td>
+                        <td>Seguimientos bromatológicos, análisis individuales por árbol y por dosel para optimizar las labores culturales y de fertilización, priorizando el desarrollo fenológico y la productividad del cultivo de Macadamia.</td>
+                        <td>En ejecución 2025</td>
                     </tr>
                 </tbody>
             </table>

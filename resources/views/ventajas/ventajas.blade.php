@@ -13,7 +13,7 @@
                 <i class="fas fa-chart-line"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Gestiona la productividad por hectárea</h3>
+                <h3 class="text-xl font-semibold text-green-700">Gestiona la productividad por hectárea y por individuo</h3>
                 <p class="text-gray-600">Optimiza los costos de producción y el precio de venta por kilogramo para maximizar tus beneficios.</p>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
             <div>
-                <h3 class="text-xl font-semibold text-green-700">Gestiona el riesgo del cultivo</h3>
+                <h3 class="text-xl font-semibold text-green-700">Gestiona el riesgo biológico del cultivo</h3>
                 <p class="text-gray-600">Minimiza riesgos asociados al terreno y las condiciones climáticas que puedan afectar tus cultivos.</p>
             </div>
         </div>

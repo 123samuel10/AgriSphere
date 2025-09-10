@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {    // Mostrar formulario de registro
@@ -50,26 +51,109 @@ class AuthController extends Controller
     }
 
     // Autenticar usuario
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+  public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if ($user && Hash::check($request->password, $user->password)) {
+        // ✅ Generar código de 6 dígitos
+        $code = rand(100000, 999999);
+
+        DB::table('two_factor_codes')->updateOrInsert(
+            ['user_id' => $user->id],
+            [
+                'code' => $code,
+                'expires_at' => now()->addMinutes(5),
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        );
+
+        // ✅ Enviar correo con el código
+        Mail::raw("Tu código de verificación es: $code", function ($message) use ($user) {
+            $message->to($user->email)->subject('Código de verificación 2FA');
+        });
+
+        // 👇 AQUÍ metes esa parte
+        session([
+            '2fa:user_id' => $user->id,
+            '2fa:user_email' => $user->email, // para no perderlo después
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-            session([
-                'user_auth' => true,
-                'user_email' => $user->email,
-                'user_id' => $user->id
-            ]);
-            return redirect()->route('panel');
-        }
-
-        return back()->with('error', 'Credenciales incorrectas.');
+        return redirect()->route('2fa.verify.form')->with('success', 'Te enviamos un código de verificación a tu correo.');
     }
+
+    return back()->with('error', 'Credenciales incorrectas.');
+}
+
+
+
+// Mostrar formulario para introducir el código
+public function show2faForm()
+{
+    return view('auth.verify-2fa');
+}
+
+// Verificar código
+public function verify2fa(Request $request)
+{
+    $request->validate([
+        'code' => 'required|digits:6',
+    ]);
+
+    $userId = session('2fa:user_id');
+    $userEmail = session('2fa:user_email'); // 👈
+
+    if (!$userId) {
+        return redirect()->route('login')->with('error', 'Sesión inválida.');
+    }
+
+    $registro = DB::table('two_factor_codes')
+        ->where('user_id', $userId)
+        ->where('code', $request->code)
+        ->where('expires_at', '>', now())
+        ->first();
+
+    if (!$registro) {
+        return back()->with('error', 'Código inválido o expirado.');
+    }
+
+    // ✅ SI EN TU APP USAS Auth::user()/auth()->id() PARA MOSTRAR ARCHIVOS:
+    Auth::loginUsingId($userId);
+
+    // ✅ Restablece las mismas claves de sesión que tenías antes del 2FA
+    session()->forget(['2fa:user_id', '2fa:user_email']);
+    session([
+        'user_auth'  => true,
+        'user_id'    => $userId,
+        'user_email' => $userEmail, // 👈 vuelve a ponerla
+    ]);
+
+    // higiene de sesión + evita fijación
+    session()->regenerate();
+
+    // (opcional pero recomendado) borra el código usado
+    DB::table('two_factor_codes')->where('user_id', $userId)->delete();
+
+    return redirect()->route('panel')->with('success', 'Autenticación completada.');
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Cerrar sesión
     public function logout()

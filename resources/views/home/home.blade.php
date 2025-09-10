@@ -12,10 +12,10 @@
             <div>
                 <h2 class="text-4xl font-semibold text-green-600 animate__animated animate__fadeInRight">Propuesta de Valor</h2>
                 <p class="mt-6 text-lg text-gray-700 animate__animated animate__fadeInRight animate__delay-1s">
-                    Aplicamos tecnología avanzada de drones y análisis de datos para aumentar la productividad y eficiencia en la agricultura. Nuestros servicios permiten mejorar los rendimientos en un 10%, reducir costos en un 15% y lograr un ROI óptimo en los siguientes dos años.
+                    Aplicamos tecnologias para la digitalización de sus cultivos, analizamos fotografias de drones y satelital para aumentar la productividad y eficiencia en la agricultura. Nuestros servicios permiten mejorar los rendimientos en un 10%, reducir costos en un 15% y lograr un ROI óptimo en los siguientes dos años.
                 </p>
                 <p class="mt-4 text-lg text-gray-700 animate__animated animate__fadeInRight animate__delay-2s">
-                    Facilitamos una gestión precisa y sostenible del cultivo, enfrentando desafíos como el cambio climático y las plagas, y maximizando el potencial genético de los cultivos. Nuestras soluciones revolucionan la agricultura, impulsando el crecimiento y la competitividad en un mercado en expansión.
+                    Facilitamos una gestión precisa y sostenible del cultivo, enfrentando desafíos como el cambio climático y las plagas, maximizando la utilización del potencial genético. Nuestras soluciones revolucionan la agricultura, impulsando el crecimiento y la competitividad en un mercado en expansión.
                 </p>
                 <a href="/servicios" class="mt-6 inline-block bg-green-500 hover:bg-green-400 px-8 py-3 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 animate__animated animate__zoomIn animate__delay-3s">
                     Descubre nuestros servicios

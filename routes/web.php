@@ -96,3 +96,10 @@ Route::get('/restablecer-contrasena', [AuthController::class, 'mostrarFormulario
 
 // Guardar nueva contraseña
 Route::post('/restablecer-contrasena', [AuthController::class, 'guardarNuevaContrasena'])->name('password.update');
+
+
+
+
+
+Route::get('/2fa/verify', [AuthController::class, 'show2faForm'])->name('2fa.verify.form');
+Route::post('/2fa/verify', [AuthController::class, 'verify2fa'])->name('2fa.verify');
